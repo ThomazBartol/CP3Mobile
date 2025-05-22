@@ -13,6 +13,7 @@ import { products } from '../data/products';
 import { CartContext } from '../providers/TGCartProvider';
 import CartIcon from '../../assets/cart-icon.png';
 import TGHeader from '../components/TGHeader';
+import TGProductCard from '../components/TGProductCard';
 
 export default function Products({ navigation }) {
   const [search, setSearch] = useState('');
@@ -27,25 +28,13 @@ export default function Products({ navigation }) {
   });
 
   const renderItem = ({ item }) => (
-    <View style={styles.card}>
-      <TouchableOpacity 
-        activeOpacity={0.8}
-        onPress={() => navigation.navigate('Detalhes', { product: item })}
-      >
-        <Image source={item.image} style={styles.imagem} />
-      </TouchableOpacity>
-      <Text style={styles.nome}>{item.title}</Text>
-      <Text style={styles.desc}>{item.desc}</Text>
-      <Text style={styles.preco}>R$ {item.price.toFixed(2)}</Text>
+  <TGProductCard
+    product={item}
+    onPress={() => navigation.navigate('Detalhes', { product: item })}
+    onAddToCart={() => addToCart(item)}
+  />
+);
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => addToCart(item)}
-      >
-        <Image source={CartIcon} style={styles.buttonImage} />
-      </TouchableOpacity>
-    </View>
-  );
 
   return (
     <View style={styles.container}>
@@ -86,47 +75,6 @@ const styles = StyleSheet.create({
   lista: {
     paddingHorizontal: 16,
     paddingBottom: 16,
-  },
-  card: {
-    marginBottom: 16,
-    backgroundColor: '#1e1e1e',
-    borderRadius: 12,
-    padding: 16,
-    alignItems: 'center',
-    elevation: 2,
-  },
-  imagem: {
-    width: 120,
-    height: 120,
-    borderRadius: 8,
-    marginBottom: 8,
-  },
-  nome: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#fff',
-    textAlign: 'center',
-  },
-  desc: {
-    fontSize: 14,
-    color: '#aaa',
-    textAlign: 'center',
-    marginVertical: 4,
-  },
-  preco: {
-    fontSize: 14,
-    color: '#fff',
-  },
-  button: {
-    marginTop: 8,
-    backgroundColor: '#03dac6',
-    paddingVertical: 8,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-  },
-  buttonImage: {
-    width: 20,
-    height: 20,
   },
   empty: {
     textAlign: 'center',
