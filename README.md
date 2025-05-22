@@ -1,4 +1,4 @@
-# FunkoShop
+# FunkoShop - CP3 de Mobile
 
 ## Ideia do Projeto
 Aplicativo de loja de produtos Funko Pop, com busca, detalhes dos produtos e gerenciamento do carrinho.
@@ -19,3 +19,11 @@ Aplicativo de loja de produtos Funko Pop, com busca, detalhes dos produtos e ger
    ```bash
    git clone https://github.com/ThomazBartol/CP3Mobile.git
    cd /CP3/Mobile
+
+2. Instale as dependêncais:
+   ```bash
+   npm install
+
+3. Inicie o projeto:
+   ```bash
+   npx expo start
