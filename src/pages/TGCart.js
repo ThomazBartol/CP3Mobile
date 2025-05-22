@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { CartContext } from '../providers/TGCartProvider';
+import TGHeader from '../components/TGHeader';
 
 export default function TGCart() {
   const { cartItems, removeFromCart, changeQuantity } = useContext(CartContext);
@@ -36,6 +37,7 @@ export default function TGCart() {
   if (cartItems.length === 0) {
     return (
       <View style={[styles.emptyContainer, { backgroundColor: '#121212' }]}>
+        <TGHeader title="Seu Carrinho" />
         <Text style={{ color: '#888', fontSize: 18 }}>Seu carrinho está vazio.</Text>
       </View>
     );
@@ -43,6 +45,7 @@ export default function TGCart() {
 
   return (
     <View style={styles.container}>
+      <TGHeader title="Seu Carrinho" />
       <FlatList
         data={cartItems}
         keyExtractor={item => item.product.id}

@@ -12,6 +12,7 @@ import {
 import { products } from '../data/products';
 import { CartContext } from '../providers/TGCartProvider';
 import CartIcon from '../../assets/cart-icon.png';
+import TGHeader from '../components/TGHeader';
 
 export default function Products({ navigation }) {
   const [search, setSearch] = useState('');
@@ -48,6 +49,7 @@ export default function Products({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <TGHeader title="Lista de Produtos" />
       <TextInput
         style={styles.input}
         placeholder="Buscar por título ou descrição..."
