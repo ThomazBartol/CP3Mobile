@@ -42,31 +42,41 @@ export default function TGCart() {
   );
 
   if (cartItems.length === 0) {
-    return (
-      <View style={[styles.emptyContainer, { backgroundColor: '#121212' }]}>
-        <TGHeader title="Seu Carrinho" />
-        <Text style={{ color: '#888', fontSize: 18 }}>Seu carrinho está vazio.</Text>
+  return (
+    <View style={styles.containertop}>
+      <TGHeader title="Seu Carrinho" />
+      <View style={styles.container}>
+        <View style={styles.emptyContent}>
+          <Text style={styles.emptyText}>Seu carrinho está vazio.</Text>
+        </View>
       </View>
-    );
-  }
+    </View>
+  );
+}
 
   return (
-    <View style={styles.container}>
+    <View style={styles.containertop}>
       <TGHeader title="Seu Carrinho" />
-      <FlatList
-        data={cartItems}
-        keyExtractor={item => item.product.id}
-        renderItem={renderItem}
-        contentContainerStyle={{ paddingBottom: 16 }}
-      />
-      <View style={styles.totalContainer}>
-        <Text style={styles.totalText}>Total: R$ {total.toFixed(2)}</Text>
+      <View style={styles.container}>
+        <FlatList
+          data={cartItems}
+          keyExtractor={item => item.product.id}
+          renderItem={renderItem}
+          contentContainerStyle={{ paddingBottom: 16 }}
+        />
+        <View style={styles.totalContainer}>
+          <Text style={styles.totalText}>Total: R$ {total.toFixed(2)}</Text>
+        </View>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  containertop: { 
+    flex: 1, 
+    backgroundColor: '#121212',
+  },
   container: { 
     flex: 1, 
     padding: 16, 
@@ -118,10 +128,14 @@ const styles = StyleSheet.create({
   removeButton: {
     backgroundColor: '#e53935',
   },
-  emptyContainer: { 
-    flex: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center',
+  emptyContent: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  },
+  emptyText: {
+    color: '#888',
+    fontSize: 18,
   },
   totalContainer: { 
     paddingTop: 16, 

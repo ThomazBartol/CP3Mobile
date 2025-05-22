@@ -4,7 +4,8 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function TGHeader({ title }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.left}>FunkoShop</Text>
+      <Text style={styles.right}>{title}</Text>
     </View>
   );
 }
@@ -15,11 +16,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#121212',
     borderBottomWidth: 1,
     borderBottomColor: '#333',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
-  title: {
+  left: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
-    textAlign: 'center',
+  },
+  right: {
+    color: '#fff',
+    fontSize: 18,
   },
 });
