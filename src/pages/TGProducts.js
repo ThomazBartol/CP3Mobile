@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, TextInput } from 'react-native';
+import React, { useState, useContext } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  Button,
+} from 'react-native';
 import { products } from '../data/products';
+import { CartContext } from '../providers/TGCartProvider';
+import CartIcon from '../../assets/cart-icon.png';
 
-export default function Products() {
+export default function Products({ navigation }) {
   const [search, setSearch] = useState('');
+  const { addToCart } = useContext(CartContext);
 
   const filteredProducts = products.filter((item) => {
     const query = search.toLowerCase();
@@ -15,10 +27,22 @@ export default function Products() {
 
   const renderItem = ({ item }) => (
     <View style={styles.card}>
-      <Image source={item.image} style={styles.imagem} />
+      <TouchableOpacity 
+        activeOpacity={0.8}
+        onPress={() => navigation.navigate('Detalhes', { product: item })}
+      >
+        <Image source={item.image} style={styles.imagem} />
+      </TouchableOpacity>
       <Text style={styles.nome}>{item.title}</Text>
       <Text style={styles.desc}>{item.desc}</Text>
       <Text style={styles.preco}>R$ {item.price.toFixed(2)}</Text>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => addToCart(item)}
+      >
+        <Image source={CartIcon} style={styles.buttonImage} />
+      </TouchableOpacity>
     </View>
   );
 
@@ -26,7 +50,7 @@ export default function Products() {
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder="Buscar produtos..."
+        placeholder="Buscar por título ou descrição..."
         value={search}
         onChangeText={setSearch}
       />
@@ -35,6 +59,9 @@ export default function Products() {
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
         contentContainerStyle={styles.lista}
+        ListEmptyComponent={
+          <Text style={styles.empty}>Nenhum produto encontrado.</Text>
+        }
       />
     </View>
   );
@@ -43,14 +70,16 @@ export default function Products() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#121212',
   },
   input: {
     margin: 16,
     padding: 12,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#333',
     borderRadius: 8,
+    backgroundColor: '#1e1e1e',
+    color: '#fff',
   },
   lista: {
     paddingHorizontal: 16,
@@ -58,10 +87,11 @@ const styles = StyleSheet.create({
   },
   card: {
     marginBottom: 16,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#1e1e1e',
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
+    elevation: 2,
   },
   imagem: {
     width: 120,
@@ -72,15 +102,34 @@ const styles = StyleSheet.create({
   nome: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#fff',
+    textAlign: 'center',
   },
   desc: {
     fontSize: 14,
-    color: '#555',
+    color: '#aaa',
     textAlign: 'center',
     marginVertical: 4,
   },
   preco: {
     fontSize: 14,
-    color: '#333',
+    color: '#fff',
+  },
+  button: {
+    marginTop: 8,
+    backgroundColor: '#03dac6',
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+  },
+  buttonImage: {
+    width: 20,
+    height: 20,
+  },
+  empty: {
+    textAlign: 'center',
+    marginTop: 32,
+    fontSize: 16,
+    color: '#888',
   },
 });

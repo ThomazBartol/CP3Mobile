@@ -1,0 +1,58 @@
+[
+  {
+    "id": "1",
+    "title": "Funko Michael Jackson",
+    "desc": "Funko Pop Rocks - Michael Jackson, o Rei do Pop com sua clássica pose.",
+    "price": 249.90,
+    "image": "funko-mj.png"
+  },
+  {
+    "id": "2",
+    "title": "Funko Freddie Mercury",
+    "desc": "Funko Pop Rocks - Freddie Mercury em sua lendária apresentação no Live Aid.",
+    "price": 249.90,
+    "image": "funko-freddie.png"
+  },
+  {
+    "id": "3",
+    "title": "Funko Tupac Shakur",
+    "desc": "Funko Pop Rocks - Tupac Shakur, um ícone do rap eternizado em vinil.",
+    "price": 249.90,
+    "image": "funko-tupac.png"
+  },
+  {
+    "id": "4",
+    "title": "Funko Darth Vader",
+    "desc": "Funko Pop Movies - Darth Vader com sabre de luz, da saga Star Wars.",
+    "price": 229.90,
+    "image": "funko-vader.png"
+  },
+  {
+    "id": "5",
+    "title": "Funko John Wick",
+    "desc": "Funko Pop Movies - John Wick pronto para a ação com seu terno e armas.",
+    "price": 229.90,
+    "image": "funko-wick.png"
+  },
+  {
+    "id": "6",
+    "title": "Funko Batman",
+    "desc": "Funko Pop Movies - Batman com seu traje clássico de Gotham.",
+    "price": 229.90,
+    "image": "funko-batman.png"
+  },
+  {
+    "id": "7",
+    "title": "Funko Ayrton Senna",
+    "desc": "Funko Pop Racing - Ayrton Senna com seu icônico capacete amarelo.",
+    "price": 269.90,
+    "image": "funko-senna.png"
+  },
+  {
+    "id": "8",
+    "title": "Funko Max Verstappen",
+    "desc": "Funko Pop Racing - Max Verstappen em seu macacão da Red Bull Racing.",
+    "price": 269.90,
+    "image": "funko-max.png"
+  }
+]
