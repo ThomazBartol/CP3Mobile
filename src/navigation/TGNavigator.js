@@ -22,7 +22,11 @@ function ProductStack() {
       <Stack.Screen
         name="Detalhes"
         component={TGProductDetails}
-        options={{ title: 'Detalhes do Produto' }}
+        options={{
+          title: 'Detalhes do Produto',
+          headerStyle: { backgroundColor: '#121212' },
+          headerTintColor: '#fff',
+        }}
       />
     </Stack.Navigator>
   );

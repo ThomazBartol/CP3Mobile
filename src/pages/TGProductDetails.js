@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor: '#fff',
+    backgroundColor: '#121212',
     alignItems: 'center',
   },
   image: {
@@ -32,15 +32,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 8,
     textAlign: 'center',
+    color: '#fff',
   },
   desc: {
     fontSize: 16,
-    color: '#555',
+    color: '#bbb',
     textAlign: 'center',
     marginBottom: 16,
   },
   price: {
     fontSize: 22,
-    color: '#000',
+    color: '#fff',
   },
 });
