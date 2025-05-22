@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { CartContext } from '../providers/TGCartProvider';
 import TGHeader from '../components/TGHeader';
+import TGButton from '../components/TGButton';
 
 export default function TGCart() {
   const { cartItems, removeFromCart, changeQuantity } = useContext(CartContext);
@@ -20,15 +21,21 @@ export default function TGCart() {
         <Text style={styles.text}>Preço unitário: R$ {item.product.price.toFixed(2)}</Text>
         <Text style={styles.text}>Subtotal: R$ {(item.product.price * item.quantity).toFixed(2)}</Text>
         <View style={styles.controls}>
-          <TouchableOpacity style={styles.controlButton} onPress={() => changeQuantity(item.product.id, +1)}>
-            <Text style={styles.controlButtonText}>+</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.controlButton} onPress={() => changeQuantity(item.product.id, -1)}>
-            <Text style={styles.controlButtonText}>-</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.controlButton, styles.removeButton]} onPress={() => removeFromCart(item.product.id)}>
-            <Text style={styles.controlButtonText}>Remover</Text>
-          </TouchableOpacity>
+          <TGButton
+            title="+"
+            onPress={() => changeQuantity(item.product.id, +1)}
+            style={styles.controlButton}
+          />
+          <TGButton
+            title="-"
+            onPress={() => changeQuantity(item.product.id, -1)}
+            style={styles.controlButton}
+          />
+          <TGButton
+            title="Remover"
+            onPress={() => removeFromCart(item.product.id)}
+            style={[styles.controlButton, styles.removeButton]}
+          />
         </View>
       </View>
     </View>
@@ -101,22 +108,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row', 
     marginTop: 10, 
     justifyContent: 'flex-start', 
-    gap: 10, // para espaçamento entre botões (pode não funcionar em todas versões, use marginRight)
+    gap: 10,
   },
   controlButton: {
     backgroundColor: '#6200ee',
     borderRadius: 8,
-    paddingVertical: 6,
-    paddingHorizontal: 14,
     marginRight: 10,
   },
   removeButton: {
     backgroundColor: '#e53935',
-  },
-  controlButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 14,
   },
   emptyContainer: { 
     flex: 1, 
