@@ -1,20 +1,37 @@
-import React from 'react';
-import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, FlatList, Image, TextInput } from 'react-native';
 import { products } from '../data/products';
 
 export default function Products() {
+  const [search, setSearch] = useState('');
+
+  const filteredProducts = products.filter((item) => {
+    const query = search.toLowerCase();
+    return (
+      item.title.toLowerCase().includes(query) ||
+      item.desc.toLowerCase().includes(query)
+    );
+  });
+
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <Image source={item.image} style={styles.imagem} />
       <Text style={styles.nome}>{item.title}</Text>
+      <Text style={styles.desc}>{item.desc}</Text>
       <Text style={styles.preco}>R$ {item.price.toFixed(2)}</Text>
     </View>
   );
 
   return (
     <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Buscar produtos..."
+        value={search}
+        onChangeText={setSearch}
+      />
       <FlatList
-        data={products}
+        data={filteredProducts}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
         contentContainerStyle={styles.lista}
@@ -28,8 +45,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  input: {
+    margin: 16,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+  },
   lista: {
-    padding: 16,
+    paddingHorizontal: 16,
+    paddingBottom: 16,
   },
   card: {
     marginBottom: 16,
@@ -47,6 +72,12 @@ const styles = StyleSheet.create({
   nome: {
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  desc: {
+    fontSize: 14,
+    color: '#555',
+    textAlign: 'center',
+    marginVertical: 4,
   },
   preco: {
     fontSize: 14,
