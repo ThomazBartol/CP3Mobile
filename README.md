@@ -14,11 +14,12 @@ Aplicativo de loja de produtos Funko Pop, com busca, detalhes dos produtos e ger
 - JavaScript  
 
 ## Instalação
+Lembrando que o projeto foi testado para rodar em Android
 
 1. Clone o repositório:
    ```bash
    git clone https://github.com/ThomazBartol/CP3Mobile.git
-   cd /CP3/Mobile
+   cd CP3Mobile/
 
 2. Instale as dependêncais:
    ```bash
@@ -27,3 +28,5 @@ Aplicativo de loja de produtos Funko Pop, com busca, detalhes dos produtos e ger
 3. Inicie o projeto:
    ```bash
    npx expo start
+
+## Acesse o Projeto via web em: http://localhost:8081
